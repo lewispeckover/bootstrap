@@ -11,7 +11,8 @@ yum -y install puppet git git-crypt || die "Failed to install required packages"
 cd /etc/puppet || die "Can't get to puppet directory /etc/puppet"
 git init
 git remote add origin https://bitbucket.org/lewispeckover/puppet.git
-git pull origin master
+git fetch origin master
+git reset --hard origin/master
 git submodule update --init
 if [ ! -f ".git/git-crypt/keys/default" ]; then
 	if [ ! -f "/root/secure.key" ]; then
