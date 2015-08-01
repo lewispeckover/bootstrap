@@ -14,6 +14,7 @@ cd /etc/puppet || die "Can't get to puppet directory /etc/puppet"
 git init
 git remote add origin https://bitbucket.org/lewispeckover/puppet.git
 git fetch origin minimal
-git reset --hard origin/minimal
+git checkout -b origin/minimal
+git reset --hard
 git submodule update --init
 puppet apply --modulepath ./modules manifests/bootstrap.pp
