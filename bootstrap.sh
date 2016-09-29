@@ -10,11 +10,8 @@ rpm --import https://bitbucket.org/lewispeckover/repo.lew.io/raw/master/RPM-GPG-
 rpm -ihv https://bitbucket.org/lewispeckover/repo.lew.io/raw/master/el/6/noarch/lew-repo-1.1.0-1.noarch.rpm
 yum -y install puppetlabs-release || die "Failed to install required packages"
 yum -y install puppet git || die "Failed to install required packages"
-cd /etc/puppet || die "Can't get to puppet directory /etc/puppet"
-git init
-git remote add origin https://bitbucket.org/lewispeckover/puppet.git
-git fetch origin minimal
-git checkout -b origin/minimal
-git reset --hard
+rm -rf /etc/puppet 
+git clone -b minimal https://bitbucket.org/lewispeckover/puppet.git /etc/puppet
+pushd /etc/puppet > /dev/null
 git submodule update --init
 puppet apply --modulepath ./modules manifests/bootstrap.pp
