@@ -45,6 +45,7 @@ enabled=1
 REPOCONTENT
 
 yum -y install puppet git || die "Failed to install required packages"
+<<<<<<< HEAD
 rm -rf /etc/puppet
 git clone -b refresh https://bitbucket.org/lewispeckover/puppet.git /etc/puppet
 pushd /etc/puppet > /dev/null
