@@ -13,7 +13,7 @@ RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release) | 
 
 rpm --import https://yum.puppetlabs.com/RPM-GPG-KEY-puppet
 yum install -y http://yum.puppetlabs.com/puppetlabs-release-pc1-el-$RELEASEVER.noarch.rpm
-yum -y install puppet git || die "Failed to install required packages"
+yum -y install puppet-agent git || die "Failed to install required packages"
 rm -rf /etc/puppetlabs && rm -rf /etc/puppet
 git clone https://github.com/lewispeckover/puppet.git /etc/puppetlabs
 pushd /etc/puppetlabs > /dev/null
