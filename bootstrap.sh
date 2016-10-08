@@ -12,9 +12,9 @@ alias die='error_exit "Error at ${0}:`echo $(( $LINENO - 1 ))`:"'
 RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release) | sed 's/\([0-9]*\).*/\1/')
 
 rpm --import https://yum.puppetlabs.com/RPM-GPG-KEY-puppet
-yum install -y https://yum.puppetlabs.com/puppetlabs-release-el-$RELEASEVER.noarch.rpm
+yum install -y http://yum.puppetlabs.com/puppetlabs-release-pc1-el-$RELEASEVER.noarch.rpm
 yum -y install puppet git || die "Failed to install required packages"
-rm -rf /etc/puppet
-git clone -b refresh https://bitbucket.org/lewispeckover/puppet.git /etc/puppet
-pushd /etc/puppet > /dev/null
-puppet apply --modulepath ./modules manifests/bootstrap.pp
+rm -rf /etc/puppetlabs && rm -rf /etc/puppet
+git clone https://github.com/lewispeckover/puppet.git /etc/puppetlabs
+pushd /etc/puppetlabs > /dev/null
+./run_puppet.sh
