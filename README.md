@@ -1,3 +1,3 @@
 # README #
 
-curl -s https://bitbucket.org/lewispeckover/bootstrap/raw/master/bootstrap.sh | sh
+curl -s https://raw.githubusercontent.com/lewispeckover/bootstrap/master/bootstrap.sh | sh
